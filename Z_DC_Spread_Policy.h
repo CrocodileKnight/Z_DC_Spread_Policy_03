@@ -91,6 +91,8 @@ private:
 	int GetBit(const int Value,int index);
 	int GetCurrentBit(double rate);
 	void ManageRateSingal();
+
+	void SetBaseFlag(Member* member);
 	//void GetSma();
 	//double LLV(int n);
 	//double HHV(int n);
@@ -157,6 +159,7 @@ private:
 	int m_nNegativeAddedFlag;
 	int m_nAddIntervalStep;
 	//int m_nBaseIntervalStep;
+	int m_nBaseAddTimes;			//基础仓位加仓次数
 
 	int m_nAddTimesInDay;
 	int m_nSubTimesInDay;

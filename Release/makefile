@@ -39,19 +39,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: libZ_DC_Spread_Policy_02.so
+all: libZ_DC_Spread_Policy_03.so
 
 # Tool invocations
-libZ_DC_Spread_Policy_02.so: $(OBJS) $(USER_OBJS)
+libZ_DC_Spread_Policy_03.so: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross G++ Linker'
-	g++ -L/home/zhou/libso -shared -o "libZ_DC_Spread_Policy_02.so" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -L/home/zhou/libso -shared -o "libZ_DC_Spread_Policy_03.so" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(LIBRARIES)$(CC_DEPS)$(C++_DEPS)$(OBJS)$(C_UPPER_DEPS)$(CXX_DEPS)$(C_DEPS)$(CPP_DEPS) libZ_DC_Spread_Policy_02.so
+	-$(RM) $(LIBRARIES)$(CC_DEPS)$(C++_DEPS)$(OBJS)$(C_UPPER_DEPS)$(CXX_DEPS)$(C_DEPS)$(CPP_DEPS) libZ_DC_Spread_Policy_03.so
 	-@echo ' '
 
 .PHONY: all clean dependents

@@ -218,6 +218,27 @@ void Z_DC_Spread_Policy::CatchOrder(Member* member){//OrderField* pOrder,MarketD
 	member->m_pOrder = pNew;
 //	return pNew;
 }
+void Z_DC_Spread_Policy::SetBaseFlag(Member* member){ //m_nBaseSubPosFlag,m_nBaseAddTimes
+	if(m_nBaseAddTimes == 0){
+		return;
+	}
+	int _len = 0;
+	if(member->m_nMaxPos > member->m_nMaxAddPosInWin*m_nBaseAddTimes){
+		_len = m_nBaseAddTimes;
+	}else{
+		_len = member->m_nMaxPos / member->m_nMaxAddPosInWin;
+	}
+	if(_len > 0){
+		this->SetBit(this->m_nNegativeAddedFlag,0);
+		for(int i=0; i<_len-1; i++){
+			this->SetBit(this->m_nPositiveAddedFlag,i);
+		}
+		SetAttr("Padded_flag",m_nPositiveAddedFlag);
+		SetAttr("Nadded_flag",m_nPositiveAddedFlag);
+		//cout<<_len<<" "<<this->m_nPositiveAddedFlag<<endl;
+	}
+}
+
 int Z_DC_Spread_Policy::GetCurrentBit(double winRate){//+30级，-30级
 	int x = 0;
 	if(winRate > 0)

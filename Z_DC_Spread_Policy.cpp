@@ -31,6 +31,7 @@ Z_DC_Spread_Policy::Z_DC_Spread_Policy() {
 	m_nSubTimesInDay = 0;
 	m_nTotalAddTimes = 0;
 	m_nTotalSubTimes = 0;
+	m_nBaseAddTimes = 0;
 
 
 }
@@ -150,6 +151,7 @@ void Z_DC_Spread_Policy::OnNewFutureMD(MarketDataField* pMD)
 				m_MyTradeB.m_fBasePrice = m_MyTradeB.m_pLastMD->LastPrice;
 				m_nCurrentStage = 1;
 
+				SetBaseFlag(&m_MyTradeA);
 				SetAttr("base_price_a",m_MyTradeA.m_fBasePrice);
 				SetAttr("base_price_b",m_MyTradeB.m_fBasePrice);
 				SetAttr("current_stage",m_nCurrentStage);
@@ -329,6 +331,8 @@ void Z_DC_Spread_Policy::OnSetParam(const char* Name,const char * Value)
 		m_nTotalSubTimes = atoi(Value);
 	}else if(strcmp(Name,"totalAddtimes") == 0){
 		m_nTotalAddTimes = atoi(Value);
+	}else if(strcmp(Name,"baseaddtimes") == 0){
+		m_nBaseAddTimes = atoi(Value);
 	}
 
 
